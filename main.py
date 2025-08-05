@@ -10,9 +10,14 @@ def exemplo_objeto():
     """
     fornecedor = Fornecedor(3, "Fornecedor Único")
     produto = Produto("Borracha", fornecedor)
-    json_produto = to_json(produto)
+    
     print("Exemplo Produto único:")
+    
+    # Convertendo o objeto produto para JSON
+    json_produto = to_json(produto)
     print(json_produto)
+    
+    # Validando se o JSON é válido
     print("É JSON válido?", is_json(json_produto))
 
 # Exemplos de uso para casos lista
@@ -24,52 +29,40 @@ def exemplo_lista():
         Produto("Caderno", Fornecedor(4, "Fornecedor Papel")),
         Produto("Régua", Fornecedor(5, "Fornecedor Medidas"))
     ]
-    json_lista = to_json(lista_produtos)
-    print("Exemplo Lista de Produtos:")
-    print(json_lista)
-    print("É JSON válido?", is_json(json_lista))
-
-# Lista de fornecedores
-fornecedores: List[Fornecedor] = [
-    Fornecedor(1, "Fornecedor XPTO"),
-    Fornecedor(2, "Fornecedor ABC")
-]
-
-# Lista de produtos
-produtos: List[Produto] = [
-    Produto("Caneta", fornecedores[0]),
-    Produto("Lápis", fornecedores[1])
-]
-
-# Converter lista de fornecedores para lista de dicionários
-fornecedores_dict = [asdict(f) for f in fornecedores]
-# Converter lista de produtos para lista de dicionários
-produtos_dict = [asdict(p) for p in produtos]
-
-# Exemplos originais separados em funções
-def exemplo_fornecedores():
-    """
-    Exibe a lista de fornecedores como JSON.
-    """
     
+    print("Exemplo Lista de Produtos:")
+
+    # Convertendo a lista de produtos para JSON
+    json_lista = to_json(lista_produtos)
+    print(json_lista)
+    
+    # Validando se o JSON é válido
+    print("É JSON válido?", is_json(json_lista))
+    
+def exemplo_lista_produtos_fornecedores():
+
     # Lista de fornecedores
     fornecedores: List[Fornecedor] = [
         Fornecedor(1, "Fornecedor XPTO"),
         Fornecedor(2, "Fornecedor ABC")
     ]
     
-    print("Fornecedores:")
-    print(to_json(fornecedores))
+    # Lista de produtos
+    produtos: List[Produto] = [
+        Produto("Caneta", fornecedores[0]),
+        Produto("Lápis", fornecedores[1])
+    ]
+    
+    # Convertendo para json
+    json_produtos_fornecedores = to_json(produtos)
+    print(json_produtos_fornecedores)
+    
+    # Validando se o JSON é válido
+    print("É JSON válido?", is_json(json_produtos_fornecedores))
 
-def exemplo_produtos():
-    """
-    Exibe a lista de produtos como JSON.
-    """
-    print("Produtos:")
-    print(to_json(produtos))
+# Exemplos originais separados em funções
 
 # Chamada dos exemplos
-exemplo_fornecedores()
-exemplo_produtos()
 exemplo_objeto()
 exemplo_lista()
+exemplo_lista_produtos_fornecedores()
